@@ -1,66 +1,126 @@
-body
+input
 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	float: left;
+	clear: both;
+	margin-bottom: 10px;
 }
 
-.deck
+#deck1
 {
-	width:50%;
-	margin: 20px auto;
+	width: 99%;
+	min-height: 115px;
+	margin: 10px auto;
 	background:dodgerblue;
-	border:solid 10px black;
-	padding: 10px;
-	border-radius:10px;
+	padding: 5px;
+	border-radius: 5px;
 	text-align: center;
-	color:white;
+	float: left;
+	clear: both;
 }
 
-.card
+#deck2
 {
-	padding: 10px;
+	width: 33%;
+	min-height: 225px;
+	margin: 10px auto;
+	background:#3F9E5F;
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	float: right;
+}
+
+#deck3
+{
+	width: 99%;
+	min-height: 115px;
+	margin: 10px auto;
+	background:#E04A5D;
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	float: left;
+	clear: both;
+}
+
+#deck4
+{
+	width: 33%;
+	min-height: 225px;
+	margin: 10px auto;
+	background:#F6C954;
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	float: left;
+}
+
+.card_diamonds
+{
+	background-image: url('card.png');
+	background-position-y: 120px;
+	color: #F6C954;
+	padding-top: 10px;
+	margin-left: -5px;
 	border: solid 1px #808080;
 	background-color: white;
 	display: inline-block;
 	border-radius: 5px;
-	font-size: 14pt;
-	text-align: center;
-	color:black;
-	margin: 3px;
-}
-
-.btn
-{
-	background:white;
-	padding: 10px 20px;
-	border-radius:30px;
-	margin: 10px;
-	display:inline-block;
-}
-
-.card .value{
-	font-size:15pt;
+	height: 100px;
+	width: 90px;
+	font-size: 18px;
 	font-family: sans-serif;
 }
 
-.card .suit
+.card_spades
 {
 	background-image: url('card.png');
+	background-position-y: 20px;
+	color: #3F9E5F;
+	padding-top: 10px;
+	margin-left: -5px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
 	height: 100px;
 	width: 90px;
+	font-size: 18px;
+	font-family: sans-serif;
 }
 
-.card .diamonds
+.card_hearts
 {
-	background-position-y: 100px;
-}
-
-.card .hearts
-{
+	background-image: url('card.png');
+	background-position-y: 20px;
 	background-position-x: 90px;
+	color: #E04A5D;
+	padding-top: 10px;
+	margin-left: -5px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	height: 100px;
+	width: 90px;
+	font-size: 18px;
+	font-family: sans-serif;
 }
 
-.card .clubs
+.card_clubs
 {
+	background-image: url('card.png');
 	background-position-x:90px;
-	background-position-y:100px;
+	background-position-y:120px;
+	color: #3091FE;
+	padding-top: 10px;
+	margin-left: -5px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 5px;
+	height: 100px;
+	width: 90px;
+	font-size: 18px;
+	font-family: sans-serif;
 }
