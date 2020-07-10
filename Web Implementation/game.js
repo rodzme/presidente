@@ -144,41 +144,45 @@ function novoJogo(a, b, c, d)
 {
 	let novoJogo = new Mesa();
 	novoJogo.start(a, b, c, d);
-	//console.log(novoJogo.jogadores);
+	console.log(novoJogo.jogadores);
 
 	var zindex = 1;
+
 	var cartaJogada = 0;
+	var turno = 0;
 	var rodada = 0;
 	var winner = 0;
 
-	document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+	//document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
 
 	document.getElementById("passarRodada").addEventListener("click", function(e)
 	{
-		if (rodada < 3)
+		if (turno < 3)
 		{
-			rodada++;
-			document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+			turno++;
+			document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 		}
 			
 		else
 		{
-			rodada = 0;
+			turno = 0;
 			cartaJogada = 0;
-			document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+			document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 		}
 	});
 
 	document.getElementById("deck1").addEventListener("click", function(e)
 	{
-		if (rodada == 0)
-		{	
+		if (turno == 0)
+		{
 			var carta = document.getElementById(e.target.id);
+			var cartaClicada = parseInt(carta.getAttribute("data-valor"));
+			var numeroRodada = document.getElementById('numerorodada');
 			var location_x = Math.floor((Math.random() * 5) + 40);
 			var location_y = Math.floor((Math.random() * 5) + 35);
 			var posx = "";
 			var posy = "";
-	
+
 			if (cartaJogada == 0)
 			{
 				carta.style.position = "absolute";
@@ -189,58 +193,63 @@ function novoJogo(a, b, c, d)
 				zindex++;
 				winner = 0;
 	
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
-
-				if (rodada < 3)
+				cartaJogada = cartaClicada;
+				
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
-				
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 			
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) > cartaJogada)
+			else if (cartaClicada > cartaJogada && turno == 0)
 			{
 				carta.style.position = "absolute";
 				carta.style.left = posx.concat(location_x.toString(), "%");
 				carta.style.top = posy.concat(location_y.toString(), "%");
 				carta.style.zIndex = zindex.toString();
-				
+
 				zindex++;
 				winner = 0;
-				
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
 
-				if (rodada < 3)
+				cartaJogada = cartaClicada;
+
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
 
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
-
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) <= cartaJogada)
-			{
-				rodada = rodada;
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
-			}			
-		}	
+		}
 	});
-	
-	document.getElementById("deck2").addEventListener("click", function(e){		
-		if (rodada == 1)
+
+	document.getElementById("deck2").addEventListener("click", function(e)
+	{
+		if (turno == 1)
 		{
 			var carta = document.getElementById(e.target.id);
+			var cartaClicada = parseInt(carta.getAttribute("data-valor"));
+			var numeroRodada = document.getElementById('numerorodada');
 			var location_x = Math.floor((Math.random() * 5) + 40);
 			var location_y = Math.floor((Math.random() * 5) + 35);
 			var posx = "";
@@ -252,26 +261,30 @@ function novoJogo(a, b, c, d)
 				carta.style.left = posx.concat(location_x.toString(), "%");
 				carta.style.top = posy.concat(location_y.toString(), "%");
 				carta.style.zIndex = zindex.toString();
-
+	
 				zindex++;
 				winner = 1;
-
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
-
-				if (rodada < 3)
+	
+				cartaJogada = cartaClicada;
+				
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
 
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 			
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) > cartaJogada)
+			else if (cartaClicada > cartaJogada)
 			{
 				carta.style.position = "absolute";
 				carta.style.left = posx.concat(location_x.toString(), "%");
@@ -281,38 +294,39 @@ function novoJogo(a, b, c, d)
 				zindex++;
 				winner = 1;
 
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
+				cartaJogada = cartaClicada;
 
-				if (rodada < 3)
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
 
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
-			}
-
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) <= cartaJogada)
-			{
-				rodada = rodada;
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 		}
 	});
 
-	document.getElementById("deck3").addEventListener("click", function(e){
-		if (rodada == 2)
+	document.getElementById("deck3").addEventListener("click", function(e)
+	{
+		if (turno == 2)
 		{
 			var carta = document.getElementById(e.target.id);
+			var cartaClicada = parseInt(carta.getAttribute("data-valor"));
+			var numeroRodada = document.getElementById('numerorodada');
 			var location_x = Math.floor((Math.random() * 5) + 40);
 			var location_y = Math.floor((Math.random() * 5) + 35);
 			var posx = "";
 			var posy = "";
-	
+
 			if (cartaJogada == 0)
 			{
 				carta.style.position = "absolute";
@@ -323,81 +337,69 @@ function novoJogo(a, b, c, d)
 				zindex++;
 				winner = 2;
 	
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
-
-				if (rodada < 3)
+				cartaJogada = cartaClicada;
+				
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
 
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 			
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) > cartaJogada)
+			else if (cartaClicada > cartaJogada)
 			{
 				carta.style.position = "absolute";
 				carta.style.left = posx.concat(location_x.toString(), "%");
 				carta.style.top = posy.concat(location_y.toString(), "%");
 				carta.style.zIndex = zindex.toString();
-	
+
 				zindex++;
 				winner = 2;
 
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
+				cartaJogada = cartaClicada;
 
-				if (rodada < 3)
+				if (turno < 3)
 				{
-					rodada++;
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
+					
 				else
 				{
-					rodada = winner;
+					turno = 0;
 					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
 
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
-			}
-
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) <= cartaJogada)
-			{
-				rodada = rodada;
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 		}
 	});
 
-	document.getElementById("deck4").addEventListener("click", function(e){
-		if (rodada == 3)
+	document.getElementById("deck4").addEventListener("click", function(e)
+	{
+		if (turno == 3)
 		{
 			var carta = document.getElementById(e.target.id);
+			var cartaClicada = parseInt(carta.getAttribute("data-valor"));
+			var numeroRodada = document.getElementById('numerorodada');
 			var location_x = Math.floor((Math.random() * 5) + 40);
 			var location_y = Math.floor((Math.random() * 5) + 35);
 			var posx = "";
 			var posy = "";
-	
-			if (cartaJogada == 0)
-			{
-				carta.style.position = "absolute";
-				carta.style.left = posx.concat(location_x.toString(), "%");
-				carta.style.top = posy.concat(location_y.toString(), "%");
-				carta.style.zIndex = zindex.toString();
-	
-				zindex++;
-	
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
 
-				rodada = 0;
-				cartaJogada = 0;
-				
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
-			}
-			
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) > cartaJogada)
+			if (cartaJogada == 0)
 			{
 				carta.style.position = "absolute";
 				carta.style.left = posx.concat(location_x.toString(), "%");
@@ -406,20 +408,57 @@ function novoJogo(a, b, c, d)
 	
 				zindex++;
 				winner = 3;
+	
+				cartaJogada = cartaClicada;
+				
+				if (turno < 3)
+				{
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+				}
+					
+				else
+				{
+					turno = 0;
+					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+				}
 
-				cartaJogada = parseInt(document.getElementById(e.target.id).getAttribute("data-valor"));
-
-				rodada = winner;
-				cartaJogada = 0;
-
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
-
-			else if (parseInt(document.getElementById(e.target.id).getAttribute("data-valor")) <= cartaJogada)
+			
+			else if (cartaClicada > cartaJogada)
 			{
-				rodada = rodada;
-				document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
+				carta.style.position = "absolute";
+				carta.style.left = posx.concat(location_x.toString(), "%");
+				carta.style.top = posy.concat(location_y.toString(), "%");
+				carta.style.zIndex = zindex.toString();
+
+				zindex++;
+				winner = 3;
+
+				cartaJogada = cartaClicada;
+
+				if (turno < 3)
+				{
+					turno++;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+				}
+					
+				else
+				{
+					turno = 0;
+					cartaJogada = 0;
+					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+				}
+				
+				rodada++;
+				numeroRodada.innerHTML = (turno+1).toString() + "o turno";
 			}
 		}
 	});
+
+	turno = winner;
+	rodada = 0;	
 }
