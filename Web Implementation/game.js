@@ -142,19 +142,19 @@ function novoJogo(a, b, c, d)
 
 	var cartaJogada = 0;
 	var turno = 0;
-	console.log("Turno:" + turno);
+	//console.log("Turno:" + turno);
 	var rodada = 0;
-	console.log("Rodada:" + rodada);
+	//console.log("Rodada:" + rodada);
 	var winner = 0;
-	console.log("Winner:" + winner);
+	//console.log("Winner:" + winner);
 
 	//document.getElementById('numerorodada').innerHTML = (rodada+1).toString() + "o turno";
 
+	document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+
 	document.getElementById("passarRodada").addEventListener("click", function(e)
 	{
-		var carta = document.getElementById(e.target.id);
 		var numeroRodada = document.getElementById('numerorodada');
-		var cartaClicada = parseInt(carta.getAttribute("data-valor"));
 
 		if (rodada < 3)
 		{
@@ -162,16 +162,16 @@ function novoJogo(a, b, c, d)
 			{
 				turno++;
 				rodada++;
-				console.log(" Turno:" + turno);
-				console.log("  Rodada:" + rodada);
+				//console.log(" Turno:" + turno);
+				//console.log("  Rodada:" + rodada);
 				document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 			}
 			else
 			{
 				turno = 0;
 				rodada++;
-				console.log(" Turno:" + turno);
-				console.log("  Rodada:" + rodada);
+				//console.log(" Turno:" + turno);
+				//console.log("  Rodada:" + rodada);
 			}
 		}
 			
@@ -179,10 +179,38 @@ function novoJogo(a, b, c, d)
 		{
 			turno = winner;
 			rodada = 0;
-			console.log(" Turno:" + turno);
-			console.log("  Rodada:" + rodada);
+			//console.log(" Turno:" + turno);
+			//console.log("  Rodada:" + rodada);
 			cartaJogada = 0;
 			document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+		}
+
+		switch(turno) 
+		{
+			case 0:
+				document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+				document.getElementById("deck2").style.animation = "";
+				document.getElementById("deck3").style.animation = "";
+				document.getElementById("deck4").style.animation = "";
+				break;
+			case 1:
+				document.getElementById("deck1").style.animation = "";
+				document.getElementById("deck2").style.animation = "glow 1s infinite alternate";
+				document.getElementById("deck3").style.animation = "";
+				document.getElementById("deck4").style.animation = "";
+				break;
+			case 2:
+				document.getElementById("deck1").style.animation = "";
+				document.getElementById("deck2").style.animation = "";
+				document.getElementById("deck3").style.animation = "glow 1s infinite alternate";
+				document.getElementById("deck4").style.animation = "";
+				break;
+			case 3:
+				document.getElementById("deck1").style.animation = "";
+				document.getElementById("deck2").style.animation = "";
+				document.getElementById("deck3").style.animation = "";
+				document.getElementById("deck4").style.animation = "glow 1s infinite alternate";
+				break;	
 		}
 
 		numeroRodada.innerHTML = (turno+1).toString() + "o turno";
@@ -219,17 +247,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						////console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -237,8 +275,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -255,7 +293,7 @@ function novoJogo(a, b, c, d)
 
 				zindex++;
 				winner = 0;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 
 				cartaJogada = cartaClicada;
 
@@ -265,17 +303,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -283,8 +331,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -315,7 +363,7 @@ function novoJogo(a, b, c, d)
 	
 				zindex++;
 				winner = 1;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 	
 				cartaJogada = cartaClicada;
 				
@@ -325,17 +373,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -343,8 +401,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -361,7 +419,7 @@ function novoJogo(a, b, c, d)
 
 				zindex++;
 				winner = 1;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 
 				cartaJogada = cartaClicada;
 
@@ -371,17 +429,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -389,8 +457,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -421,7 +489,7 @@ function novoJogo(a, b, c, d)
 	
 				zindex++;
 				winner = 2;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 	
 				cartaJogada = cartaClicada;
 				
@@ -431,17 +499,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "glow 1s infinite alternate";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "glow 1s infinite alternate";
 					}
 				}
 					
@@ -449,8 +527,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -467,7 +545,7 @@ function novoJogo(a, b, c, d)
 
 				zindex++;
 				winner = 2;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 
 				cartaJogada = cartaClicada;
 
@@ -477,17 +555,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "glow 1s infinite alternate";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "glow 1s infinite alternate";
 					}
 				}
 					
@@ -495,8 +583,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -527,7 +615,7 @@ function novoJogo(a, b, c, d)
 	
 				zindex++;
 				winner = 3;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 	
 				cartaJogada = cartaClicada;
 				
@@ -537,17 +625,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -555,8 +653,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
@@ -573,7 +671,7 @@ function novoJogo(a, b, c, d)
 
 				zindex++;
 				winner = 3;
-				console.log("Winner:" + winner);
+				//console.log("Winner:" + winner);
 
 				cartaJogada = cartaClicada;
 
@@ -583,17 +681,27 @@ function novoJogo(a, b, c, d)
 					{
 						turno++;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
+
+						document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 					else
 					{
 						turno = 0;
 						rodada++;
-						console.log(" Turno:" + turno);
-						console.log("  Rodada:" + rodada);
+						//console.log(" Turno:" + turno);
+						//console.log("  Rodada:" + rodada);
 						cartaJogada = cartaClicada;
+
+						document.getElementById("deck1").style.animation = "glow 1s infinite alternate";
+						document.getElementById("deck2").style.animation = "";
+						document.getElementById("deck3").style.animation = "";
+						document.getElementById("deck4").style.animation = "";
 					}
 				}
 					
@@ -601,8 +709,8 @@ function novoJogo(a, b, c, d)
 				{
 					turno = winner;
 					rodada = 0;
-					console.log(" Turno:" + turno);
-					console.log("  Rodada:" + rodada);
+					//console.log(" Turno:" + turno);
+					//console.log("  Rodada:" + rodada);
 					cartaJogada = 0;
 					document.getElementById('numerorodada').innerHTML = (turno+1).toString() + "o turno";
 				}
