@@ -8,7 +8,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against Presidente",
-            "url": "file:///C:/Users/rodri/OneDrive/Documents/GitHub/presidente/Web%20Implementation/presidente.html",
+            "url": "C:/Users/rodri/Documents/Projects/presidente/Web Implementation/presidente.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

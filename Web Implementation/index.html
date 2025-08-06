@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Presidente - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo i {
+            font-size: 3rem;
+            color: #ffd700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        .welcome-text {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .features {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .features h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .features ul {
+            list-style: none;
+            color: #4a5568;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .features li i {
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 480px) {
+            .welcome-card {
+                padding: 30px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .logo i {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-card">
+        <div class="logo">
+            <i class="fas fa-crown"></i>
+            <h1>Presidente</h1>
+        </div>
+        
+        <p class="welcome-text">
+            Welcome to Presidente, the classic card game! 
+            Gather your friends and enjoy this strategic card game with a modern interface.
+        </p>
+        
+        <a href="setup.html" class="start-btn">
+            <i class="fas fa-play"></i>
+            Start Playing
+        </a>
+        
+        <div class="features">
+            <h3><i class="fas fa-star"></i> Game Features</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Modern, responsive design</li>
+                <li><i class="fas fa-check"></i> Real-time game updates</li>
+                <li><i class="fas fa-check"></i> Smooth animations</li>
+                <li><i class="fas fa-check"></i> Easy player setup</li>
+                <li><i class="fas fa-check"></i> Mobile-friendly interface</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

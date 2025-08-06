@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presidente - Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-card {
+            background: white;
+            border: 2px solid #333;
+            border-radius: 8px;
+            width: 60px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .test-card:hover {
+            background: #f0f0f0;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Presidente Game Debug</h1>
+    
+    <div class="debug-section">
+        <h2>Test Card Clicking</h2>
+        <p>Click on these test cards to see if the click events work:</p>
+        <div class="test-card" onclick="logClick('Test card 1 clicked')">A♠</div>
+        <div class="test-card" onclick="logClick('Test card 2 clicked')">K♥</div>
+        <div class="test-card" onclick="logClick('Test card 3 clicked')">Q♦</div>
+        <div class="test-card" onclick="logClick('Test card 4 clicked')">J♣</div>
+    </div>
+
+    <div class="debug-section">
+        <h2>Test Game Setup</h2>
+        <button onclick="setupTestGame()">Setup Test Game</button>
+        <button onclick="testCardCreation()">Test Card Creation</button>
+        <button onclick="openGame()">Open Game</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>Debug Log</h2>
+        <div id="debugLog" class="log"></div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('debugLog');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${timestamp}] ${message}\n`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+
+        function logClick(message) {
+            log(message);
+        }
+
+        function clearLog() {
+            document.getElementById('debugLog').innerHTML = '';
+        }
+
+        function setupTestGame() {
+            log('Setting up test game...');
+            const testNames = ['Player1', 'Player2', 'Player3', 'Player4'];
+            sessionStorage.setItem('presidentePlayerNames', JSON.stringify(testNames));
+            log('Test player names stored: ' + JSON.stringify(testNames));
+        }
+
+        function testCardCreation() {
+            log('Testing card creation...');
+            
+            // Create a test card element
+            const testCard = document.createElement('div');
+            testCard.className = 'card_hearts';
+            testCard.setAttribute('data-value', '10');
+            testCard.setAttribute('data-suit', 'hearts');
+            testCard.setAttribute('data-rank', '10');
+            testCard.innerHTML = '10';
+            
+            // Test if card has proper attributes
+            log('Card created with classes: ' + testCard.className);
+            log('Card data-value: ' + testCard.getAttribute('data-value'));
+            log('Card data-suit: ' + testCard.getAttribute('data-suit'));
+            
+            // Test click handler
+            testCard.addEventListener('click', () => {
+                log('Test card clicked successfully!');
+            });
+            
+            // Simulate click
+            testCard.click();
+        }
+
+        function openGame() {
+            log('Opening game page...');
+            window.open('presidente.html', '_blank');
+        }
+
+        // Log page load
+        window.addEventListener('load', () => {
+            log('Debug page loaded');
+        });
+    </script>
+</body>
+</html> 

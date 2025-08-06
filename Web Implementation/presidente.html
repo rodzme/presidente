@@ -5,25 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Presidente</title>
+    <title>Presidente - Game</title>
 
     <link rel="stylesheet" href="presidente.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <script src="jquery-3.5.1.min.js"></script>
+    <script src="game-config.js"></script>
+    <script src="game-events.js"></script>
     <script src="game.js"></script>
 </head>
 <body>
-    <input type="text" id="Player1">
-    <input type="text" id="Player2">
-    <input type="text" id="Player3">
-    <input type="text" id="Player4">
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="header-left">
+                <h1><i class="fas fa-crown"></i> Presidente</h1>
+                <div class="game-info">
+                    <span class="turn-display" id="numerorodada">Waiting for players...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="new-game-btn" id="newGameBtn">
+                    <i class="fas fa-plus"></i>
+                    New Game
+                </button>
+            </div>
+        </header>
 
-    <input type="button" value="Novo Jogo" onclick="novoJogo(document.getElementById('Player1').value, document.getElementById('Player2').value, document.getElementById('Player3').value, document.getElementById('Player4').value)">
-    <input type="button" value="Passar Turno" id="passarRodada"><span id="numerorodada"></span>
+        <!-- Floating Score Table -->
+        <div class="score-table-floating collapsed" id="scoreTableFloating">
+            <button class="score-collapse-btn" id="scoreCollapseBtn" title="Expand/collapse score table">
+                <i class="fas fa-chevron-up"></i>
+            </button>
+            <div class="score-table">
+                <h3><i class="fas fa-trophy"></i> Score Table</h3>
+                <div class="score-header">
+                    <div class="player-name-col">Player</div>
+                    <div class="score-col">1st</div>
+                    <div class="score-col">2nd</div>
+                    <div class="score-col">3rd</div>
+                    <div class="score-col">4th</div>
+                    <div class="score-col">Total</div>
+                </div>
+                <div class="score-rows" id="scoreRows">
+                    <!-- Score rows will be populated by JavaScript -->
+                </div>
+                <div class="score-actions">
+                    <button class="reset-scores-btn" id="resetScoresBtn">
+                        <i class="fas fa-undo"></i>
+                        Reset Scores
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <div id="deck1"></div>
-    <div id="deck4"></div>
-    <div id="deck2"></div>
-    <div id="deck3"></div>
+        <!-- Game Board -->
+        <div class="game-board">
+
+            <!-- Player 3 (Bottom) -->
+            <div class="player-area player3-area">
+                <div class="player-info">
+                    <div class="player-avatar player3-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="player-details">
+                        <h3 id="player3Name">Player 3</h3>
+                        <span class="card-count" id="player3Count">13 cards</span>
+                    </div>
+                </div>
+                <div class="deck-container" id="deck3"></div>
+            </div>
+
+            <!-- Player 2 (Right) -->
+            <div class="player-area player2-area">
+                <div class="player-info">
+                    <div class="player-avatar player2-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="player-details">
+                        <h3 id="player2Name">Player 2</h3>
+                        <span class="card-count" id="player2Count">13 cards</span>
+                    </div>
+                </div>
+                <div class="deck-container" id="deck2"></div>
+            </div>
+
+            <!-- Player 1 (Top) -->
+            <div class="player-area player1-area">
+                <div class="player-info">
+                    <div class="player-avatar player1-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="player-details">
+                        <h3 id="player1Name">Player 1</h3>
+                        <span class="card-count" id="player1Count">13 cards</span>
+                    </div>
+                </div>
+                <div class="deck-container" id="deck1"></div>
+            </div>
+
+            <!-- Player 4 (Left) -->
+            <div class="player-area player4-area">
+                <div class="player-info">
+                    <div class="player-avatar player4-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="player-details">
+                        <h3 id="player4Name">Player 4</h3>
+                        <span class="card-count" id="player4Count">13 cards</span>
+                    </div>
+                </div>
+                <div class="deck-container" id="deck4"></div>
+            </div>
+
+            <!-- Center Area for Played Cards -->
+            <div class="center-area" id="centerArea">
+                <div class="center-message">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Click "New Game" to start playing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden inputs for legacy compatibility -->
+        <input type="hidden" id="Player1" value="">
+        <input type="hidden" id="Player2" value="">
+        <input type="hidden" id="Player3" value="">
+        <input type="hidden" id="Player4" value="">
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Setting up game...</p>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-overlay" id="notificationOverlay">
+        <div class="notification-message" id="notificationMessage">
+            <i class="icon fas fa-info-circle"></i>
+            <h3 id="notificationTitle">Notification</h3>
+            <p id="notificationText">Message content</p>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Turn Indicator -->
+    <div class="turn-indicator" id="turnIndicator">
+        <h3>It's your turn!</h3>
+        <div class="player-name" id="turnPlayerName">Player Name</div>
+    </div>
 </body>
 </html>
